@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "MVI Habit Tracker"
+rootProject.name = "MVIHabitTracker"
 include(":app")
 include(":libAndroid")
 include(":libCommon")

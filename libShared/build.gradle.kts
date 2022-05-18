@@ -7,7 +7,7 @@ group = "com.kanastruk.sample.shared"
 version = "1.0-SNAPSHOT"
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    // sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     compileSdk = 32
     defaultConfig {
         minSdk = 24
@@ -24,6 +24,8 @@ kotlin {
             kotlinOptions.jvmTarget = "11"
         }
     }
+    // NOTE: https://youtrack.jetbrains.com/issue/KT-49109
+    // NOTE: https://stackoverflow.com/questions/60534770/exception-when-building-a-kotlin-js-project-error-package-json-name-contains-i
     js(IR) {
         browser {
             commonWebpackConfig {
@@ -33,6 +35,7 @@ kotlin {
         binaries.executable()
     }
     ios()
+    // NOTE: https://stackoverflow.com/questions/40743713/command-line-tool-error-xcrun-error-unable-to-find-utility-xcodebuild-n?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     macosX64("macos")
     android()
 
