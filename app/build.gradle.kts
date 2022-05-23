@@ -58,20 +58,27 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
     implementation("androidx.compose.material:material:1.1.1")
 
+    debugImplementation("androidx.compose.ui:ui-tooling:$composeUiVersion")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUiVersion")
+
     // Simple DI
-    implementation("io.insert-koin:koin-android:3.0.2")
+    implementation("io.insert-koin:koin-android:3.2.0")
+
+    // Square Networking
+    debugImplementation ("com.squareup.okhttp3:logging-interceptor:4.9.0") // https://github.com/square/okhttp/blob/master/CHANGELOG.md
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0") // https://github.com/square/retrofit/blob/master/CHANGELOG.md
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // Logging
     implementation("com.jakewharton.timber:timber:4.7.1") // https://github.com/JakeWharton/timber/releases
 
     // Unit tests
     testImplementation("junit:junit:4.13.2")
+    testImplementation("io.insert-koin:koin-test:3.2.0")
 
     // Instrumentation & UI
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeUiVersion")
 
-    debugImplementation("androidx.compose.ui:ui-tooling:$composeUiVersion")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUiVersion")
 }
