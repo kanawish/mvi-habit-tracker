@@ -3,7 +3,7 @@ plugins {
     id("com.android.application")
 }
 
-val composeUiVersion = "1.1.1"
+val composeUiVersion = "1.2.0-beta02"
 
 android {
     namespace = "com.kanastruk.sample.habit"
@@ -39,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.1"
+        kotlinCompilerExtensionVersion = composeUiVersion
     }
     packagingOptions {
         resources.excludes += "META-INF/AL2.0"

@@ -1,13 +1,15 @@
 package com.kanastruk.shared
 
+import android.util.Log
+
 actual fun logE(msg: String) {
-    TODO()
+    Log.e("libShared", msg)
 }
 
 actual fun logW(msg: String) {
-    TODO()
+    Log.w("libShared", msg)
 }
 
 actual fun logD(msg: String) {
-    TODO()
+    Log.d("libShared", msg)
 }
