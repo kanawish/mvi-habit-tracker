@@ -45,15 +45,15 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":libShared"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
-                implementation("io.insert-koin:koin-core:3.0.2")
+                implementation("io.insert-koin:koin-core:3.2.0")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation("io.insert-koin:koin-test:3.0.2")
+                implementation("io.insert-koin:koin-test:3.2.0")
             }
         }
 
