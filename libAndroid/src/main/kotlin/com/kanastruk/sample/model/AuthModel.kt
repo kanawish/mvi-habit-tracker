@@ -19,7 +19,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class AuthModel(
+    // TODO: Add dependencies
 ) {
+    // TODO: Add authStore StateFlow
+
+    // TODO: Initialize Model
+
+    // TODO: signIn function
 
     private fun process(intent: Intent<AuthState>) {
         TODO()

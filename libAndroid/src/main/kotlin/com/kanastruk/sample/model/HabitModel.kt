@@ -40,7 +40,12 @@ import timber.log.Timber
  *
  */
 class HabitModel(
+    // TODO
 ) {
+    // TODO: Add habitsStore StateFlow
+    // TODO: Add errors event SharedFlow
+
+
     /**
      * This is the simplest Intent processor.
      */
@@ -49,6 +54,7 @@ class HabitModel(
     }
 
     // TODO: Whole set of API intents (Load + CRuD of Habits and Entries)
+    // NOTE: Keep those as mocks until we implement API calls.
 }
 
 /**
