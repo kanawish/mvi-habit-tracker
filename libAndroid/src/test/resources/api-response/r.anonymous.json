@@ -1,0 +1,7 @@
+{
+  "kind": "identitytoolkit#SignupNewUserResponse",
+  "idToken": "anIdToken",
+  "refreshToken": "aRefreshToken",
+  "expiresIn": "3600",
+  "localId": "anAnonymousUserId"
+}
