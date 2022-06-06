@@ -15,14 +15,25 @@ import kotlinx.datetime.Clock
  *
  * TODO: Write some tools to better 'parse' the raw maps in HabitState.
  */
+data class HabitState(
+    val habits: Map<String, Habit> = emptyMap(),
+    val entries: Map<String, Map<String, Entry>> = emptyMap(),
+    val cacheState: CacheState,
+    val touchTime: Long = Clock.System.now().epochSeconds
+)
 
 /** HabitState.touch() Updates 'touchTime' to Clock 'now()'. */
+fun HabitState.touch() = this.copy(touchTime = Clock.System.now().epochSeconds)
 
 /**
  * HabitError are 'one time signals' the UX can react to, to prompt users with
  * a call to action (click here to refresh your session), or check their
  * connection, etc.
  */
+sealed class HabitError {
+    object AuthTokenExpired: HabitError()
+    data class GenericError(val msg:String): HabitError()
+}
 
 /**
  * CacheState indicates if the cache is fresh-off-the-server, or has been modified.
@@ -56,3 +67,6 @@ import kotlinx.datetime.Clock
  *
  * NOTE: We could use a locally cached copy to re-build from scratch, as a PoC.
  */
+enum class CacheState {
+    LOADING, LOADED, BUSY, MODIFIED, FAILED
+}

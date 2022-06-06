@@ -12,3 +12,11 @@ import retrofit2.http.Query
  *
  * see https://firebase.google.com/docs/reference/rest/auth#section-sign-in-anonymously
  */
+interface IdentityToolkitApi {
+    @Headers("Content-Type: application/json")
+    @POST("v1/accounts:signUp")
+    suspend fun signupAnonymous(
+        @Query("key") apiKey: String,
+        @Body param: IdentityToolkitParam
+    ): Response<AnonymousResponse>
+}
