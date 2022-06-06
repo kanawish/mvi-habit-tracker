@@ -1,0 +1,49 @@
+{
+  "entry": {
+    "WP9ApCQvhiOKPZs2KfF1xiBrfgu2": {
+      "foo": {
+        "-N304SCTJpF2eIdgzB5f": {
+          "timestamp": 1653520654,
+          "value": 42
+        },
+        "-N304iiWOoOu2n69igxN": {
+          "timestamp": 1653520725,
+          "value": 42
+        },
+        "-N34j8_wLmOqRVMWpULM": {
+          "timestamp": 1653537821,
+          "value": 42
+        },
+        "-N34jk_M-A0VUhBgIePK": {
+          "timestamp": 1653537981,
+          "value": 42
+        }
+      }
+    }
+  },
+  "habit": {
+    "WP9ApCQvhiOKPZs2KfF1xiBrfgu2": {
+      "-N304irDUv9RU6YypYcX": {
+        "frequency": "Daily",
+        "goal": 4,
+        "name": "POST Habit Test",
+        "startDate": 1653520726,
+        "unit": "Todo"
+      },
+      "-N30uSiFRfhLCV_W_98n": {
+        "frequency": "Daily",
+        "goal": 4,
+        "name": "POST Habit Test",
+        "startDate": 1653522606,
+        "unit": "Todo"
+      },
+      "-N34jkhRa8JjlKhtqNfz": {
+        "frequency": "Daily",
+        "goal": 4,
+        "name": "POST Habit Test",
+        "startDate": 1653537982,
+        "unit": "Todo"
+      }
+    }
+  }
+}

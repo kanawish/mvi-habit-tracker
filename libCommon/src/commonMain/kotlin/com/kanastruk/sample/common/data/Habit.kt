@@ -1,5 +1,8 @@
 package com.kanastruk.sample.common.data
 
+/**
+ * Habit is fairly detailed.
+ */
 data class Habit(
     val name: String,
     val frequency: Frequency,
@@ -10,10 +13,3 @@ data class Habit(
     val archived: Boolean = false
 )
 
-enum class UnitType {
-    Counter, Todo, Liquid, Weight
-}
-
-enum class Frequency {
-    Weekly, Daily
-}

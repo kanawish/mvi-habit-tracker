@@ -1,0 +1,22 @@
+{
+  "habitA": {
+    "firstEntryID": {
+      "timestamp": 42,
+      "value": 1
+    },
+    "secondEntryID": {
+      "timestamp": 43,
+      "value": 2
+    }
+  },
+  "habitB": {
+    "thirdEntryID": {
+      "timestamp": 52,
+      "value": 11
+    },
+    "fourthEntryID": {
+      "timestamp": 53,
+      "value": 22
+    }
+  }
+}
