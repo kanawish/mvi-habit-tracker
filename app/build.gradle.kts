@@ -65,7 +65,7 @@ dependencies {
     implementation("io.insert-koin:koin-android:3.2.0")
 
     // Square Networking
-    debugImplementation ("com.squareup.okhttp3:logging-interceptor:4.9.0") // https://github.com/square/okhttp/blob/master/CHANGELOG.md
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0") // https://github.com/square/okhttp/blob/master/CHANGELOG.md
     implementation ("com.squareup.retrofit2:retrofit:2.9.0") // https://github.com/square/retrofit/blob/master/CHANGELOG.md
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
