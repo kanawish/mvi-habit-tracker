@@ -24,3 +24,9 @@ import com.kanastruk.fb.rest.auth.Credentials
  * - ready: existing creds, user initiated reset()/refresh()
  * - error: can only really try reset()?
  */
+sealed class AuthState {
+    object Init : AuthState()
+    data class Ready(val credentials: Credentials) : AuthState()
+    data class Refreshing(val credentials: Credentials) : AuthState()
+    data class Error(val msg: String) : AuthState()
+}

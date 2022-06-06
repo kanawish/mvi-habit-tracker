@@ -39,6 +39,17 @@ import timber.log.Timber
  * My strategy is to split things up beyond this point.
  *
  */
+class HabitModel(
+) {
+    /**
+     * This is the simplest Intent processor.
+     */
+    private fun process(intent: Intent<HabitState>) {
+        TODO()
+    }
+
+    // TODO: Whole set of API intents (Load + CRuD of Habits and Entries)
+}
 
 /**
  * HabitApi builder function

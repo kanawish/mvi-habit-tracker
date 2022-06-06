@@ -18,3 +18,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+class AuthModel(
+) {
+
+    private fun process(intent: Intent<AuthState>) {
+        TODO()
+    }
+
+    fun refreshToken() = process(TODO())
+
+}
