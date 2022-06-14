@@ -147,12 +147,51 @@ class HabitModel(
         }
     }
 
-    // TODO: Whole set of API intents (Load + CRuD of Habits and Entries)
-    // NOTE: Keep those as mocks until we implement API calls.
+    /**
+     * Process an 'add entry' intent. In our app, typically would be user
+     * tapping on a habit to record activity, entering a quantity
+     */
+
+    /**
+     * We'll give the users the ability to 'undo' the latest habit entry for a given habit.
+     * I imagine either a button in the 'habit detail view' or an undo button hidden behind
+     * a horizontal sliding row.
+     */
+
+    /**
+     * I imagine this as an Intent that gets called upon when user presses
+     * 'Save' on a habit creation form screen.
+     *
+     * That screen would likely require a Model of it's own, with an in-memory
+     * copy of an edited habit, and a potentially short, ephemeral lifecycle.
+     */
+
+    /**
+     * The creation/edit screen will be one and the same, and we'll adjust the
+     * associated model to have an awareness of it being an edit or creation flow.
+     *
+     * Probably a nullable habitId in that Model will be sufficient to convey the
+     * idea.
+     *
+     * Error handling will need to be built out with that in mind.
+     */
+
+    /**
+     * Archiving an intent, will be a soft-delete operation. Helps keep things simple,
+     * we can delegate the cleanup to the server side. (Think a 30-day deletion cycle)
+     *
+     * Lets us keep things really simple code wise. Also leaves the door open to
+     * un-archive certain items as a bonus feature.
+     *
+     * re: dual param use, many ways of wrapping up the two in a type.
+     * Exercise left to readers, just remember, software is never 'done'.
+     *
+     * see https://www.amusingplanet.com/2017/08/the-art-of-deliberate-imperfection.html
+     */
 
     // ***** PRIVATE RETROFIT/API DEPENDENT FUNCTIONS *****
     /**
-     * Must be in 'LOADING' while waiting on callback.
+     * Must be 'LOADING' while waiting on callback.
      */
     private suspend fun HabitApi.reloadProcess(userId: String) {
         val habits = getHabits(userId).body()
@@ -167,6 +206,35 @@ class HabitModel(
             }
         }
     }
+
+    /**
+     * POST a new habit, updates the local cache and marks it as MODIFIED.
+     */
+
+    /**
+     * PUT on an existing habit, updates the local cache and marks it as MODIFIED.
+     */
+
+    /**
+     * Adds the given entry on the server, and updates the in-memory cache.
+     */
+
+    // ***** PRIVATE STATE MANIPULATION FUNCTIONS *****
+
+    /**
+     * Create a copy of HabitState with a new Entry added.
+     *
+     * Manipulating maps of maps gets messy. The functions below keeps everything
+     * immutable by using Map's operator function, and keeps things tidy
+     * in our Intent code.
+     */
+
+    /**
+     * Create a copy of HabitState with the entry keyed by entryId removed from
+     * habitId map of entries.
+     *
+     * Useful for removing 'latest entry' from the stack.
+     */
 
     /**
      * Call this as appropriate for your Lifecycle needs.
