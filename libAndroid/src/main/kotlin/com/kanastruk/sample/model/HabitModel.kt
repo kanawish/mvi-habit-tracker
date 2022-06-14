@@ -130,6 +130,10 @@ class HabitModel(
         else -> false
     }
 
+    private fun isModifiable(state: HabitState):Boolean = when(state.cacheState) {
+        LOADED, MODIFIED -> true
+        else -> false
+    }
 
     // ***** PUBLIC PROCESS-INTENT FUNCTIONS *****
 
@@ -151,12 +155,40 @@ class HabitModel(
      * Process an 'add entry' intent. In our app, typically would be user
      * tapping on a habit to record activity, entering a quantity
      */
+    fun processAddEntryIntent(habitId: String, quantity:Int) {
+        authedProcess(::isModifiable) { (credentials, api),oldState->
+            scope.launch {
+                val newEntry = Entry(Clock.System.now().epochSeconds, quantity)
+                api.createEntry(
+                    userId = credentials.localId,
+                    habitId = habitId,
+                    entry = newEntry
+                )
+            }
+            // NOTE: Recommended to transition to 'safe' waiting state.
+            oldState.copy(cacheState = BUSY).touch()
+        }
+    }
 
     /**
      * We'll give the users the ability to 'undo' the latest habit entry for a given habit.
      * I imagine either a button in the 'habit detail view' or an undo button hidden behind
      * a horizontal sliding row.
      */
+    fun processUndoEntryIntent(habitId:String) {
+        authedProcess(::isModifiable) { (credentials, api),oldState->
+            scope.launch {
+                oldState.entries[habitId]
+                    ?.toList()
+                    ?.maxByOrNull { (_, v) -> v.timestamp }
+                    ?.let { (latestEntryId, _) ->
+                        api.removeEntry(habitId, credentials.localId, latestEntryId)
+                    }
+                    ?: TODO("publish a UX Error event") // NOTE: Crash-worthy?
+            }
+            oldState.copy(cacheState = BUSY).touch()
+        }
+    }
 
     /**
      * I imagine this as an Intent that gets called upon when user presses
@@ -165,6 +197,12 @@ class HabitModel(
      * That screen would likely require a Model of it's own, with an in-memory
      * copy of an edited habit, and a potentially short, ephemeral lifecycle.
      */
+    fun processCreateHabitIntent(habit:Habit) {
+        authedProcess(::isModifiable) { (credentials, api),oldState->
+            scope.launch { api.createHabit(credentials.localId, habit) }
+            oldState.copy(cacheState = BUSY).touch()
+        }
+    }
 
     /**
      * The creation/edit screen will be one and the same, and we'll adjust the
@@ -175,6 +213,12 @@ class HabitModel(
      *
      * Error handling will need to be built out with that in mind.
      */
+    fun processUpdateHabitIntent(habitId:String, habit:Habit) {
+        authedProcess(::isModifiable) { (credentials, api),oldState->
+            scope.launch { api.updateHabit(credentials.localId, habitId, habit) }
+            oldState.copy(cacheState = BUSY).touch()
+        }
+    }
 
     /**
      * Archiving an intent, will be a soft-delete operation. Helps keep things simple,
@@ -188,6 +232,14 @@ class HabitModel(
      *
      * see https://www.amusingplanet.com/2017/08/the-art-of-deliberate-imperfection.html
      */
+    fun processArchiveHabitIntent(habitId:String, habit:Habit) {
+        authedProcess(::isModifiable) { (credentials, api),oldState->
+            scope.launch {
+                api.updateHabit(credentials.localId, habitId, habit.copy(archived = true))
+            }
+            oldState.copy(cacheState = BUSY).touch()
+        }
+    }
 
     // ***** PRIVATE RETROFIT/API DEPENDENT FUNCTIONS *****
     /**
@@ -210,14 +262,63 @@ class HabitModel(
     /**
      * POST a new habit, updates the local cache and marks it as MODIFIED.
      */
+    private suspend fun HabitApi.createHabit(userId: String, habit:Habit) {
+        val response = postHabit(userId, habit)
+        if( response.isSuccessful) {
+            response.body()?.let { nameResponse ->
+                process { old ->
+                    old.copy(
+                        cacheState = MODIFIED,
+                        habits = old.habits.plus(nameResponse.name to habit)
+                    )
+                }
+            }
+        } else {
+            TODO("publish an API/Auth Error event.")
+        }
+    }
 
     /**
      * PUT on an existing habit, updates the local cache and marks it as MODIFIED.
      */
+    private suspend fun HabitApi.updateHabit(userId: String, habitId: String, habit: Habit) {
+        val response = putHabit(userId, habitId, habit)
+        if( response.isSuccessful ) {
+            response.body()?.let { savedHabit ->
+                process { old ->
+                    old.copy(
+                        cacheState = MODIFIED,
+                        habits = old.habits.plus(habitId to savedHabit)
+                    )
+                }
+            }
+        } else {
+            TODO("publish an API/Auth Error event.")
+        }
+    }
 
     /**
      * Adds the given entry on the server, and updates the in-memory cache.
      */
+    private suspend fun HabitApi.createEntry(userId: String, habitId: String, entry: Entry) {
+        val response = postEntry(userId, habitId, entry)
+        if( response.isSuccessful ) {
+            response.body()?.name?.let { newEntryId ->
+                process { old -> old.plusEntry(habitId, newEntryId, entry) }
+            }
+        } else {
+            TODO("publish an API/Auth Error event")
+        }
+    }
+
+    private suspend fun HabitApi.removeEntry(userId: String, habitId: String, entryId: String) {
+        val response = deleteEntry(userId, habitId, entryId)
+        if (response.isSuccessful) {
+            process { old -> old.minusEntry(habitId, entryId) }
+        } else {
+            TODO("publish an API/Auth Error event")
+        }
+    }
 
     // ***** PRIVATE STATE MANIPULATION FUNCTIONS *****
 
@@ -228,6 +329,13 @@ class HabitModel(
      * immutable by using Map's operator function, and keeps things tidy
      * in our Intent code.
      */
+    private fun HabitState.plusEntry(habitId: String, entryId: String, entry: Entry): HabitState {
+        val keyValue = entryId to entry
+        // Updated entryMap for habitId, a fresh one if none exist yet.
+        val newEntryMap: Map<String, Entry> = entries[habitId]?.plus(keyValue) ?: mapOf(keyValue)
+        val habitEntryMap = entries.plus(habitId to newEntryMap)
+        return copy(entries = habitEntryMap)
+    }
 
     /**
      * Create a copy of HabitState with the entry keyed by entryId removed from
@@ -235,6 +343,13 @@ class HabitModel(
      *
      * Useful for removing 'latest entry' from the stack.
      */
+    private fun HabitState.minusEntry(habitId: String, entryId: String): HabitState {
+        return entries[habitId]?.let { oldEntryMap ->
+            oldEntryMap.minus(entryId)
+                .let { newEntryMap -> entries.plus(habitId to newEntryMap) }
+                .let { newHabitEntryMap -> copy(entries = newHabitEntryMap) }
+        } ?: this // Fallback in case entries[habitId] is null.
+    }
 
     /**
      * Call this as appropriate for your Lifecycle needs.
