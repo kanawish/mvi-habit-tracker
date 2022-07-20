@@ -75,7 +75,7 @@ class ExampleEditorActivity : ComponentActivity() {
         Frequency.Daily,
         UnitType.Weight,
         0,
-        Clock.System.now().toEpochMilliseconds(),
+        Clock.System.now().epochSeconds,
         null
     )
 

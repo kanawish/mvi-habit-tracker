@@ -14,6 +14,7 @@ import kotlinx.datetime.*
  * (More obvious in the Model, how we'll try to use the
  * 'expected state' principle).
  *
+ * @param touchTime in epoch milliseconds, unlike most entries/habits timestamps in epoch seconds
  * TODO: Write some tools to better 'parse' the raw maps in HabitState.
  */
 data class HabitState(

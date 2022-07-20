@@ -20,15 +20,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kanastruk.sample.common.data.Frequency
 import com.kanastruk.sample.common.data.Frequency.Daily
 import com.kanastruk.sample.common.data.Frequency.Weekly
 import com.kanastruk.sample.common.data.Habit
 import com.kanastruk.sample.common.data.UnitType
+import com.kanastruk.sample.common.data.UnitType.*
 import com.kanastruk.sample.habit.R
 import com.kanastruk.sample.habit.ui.HabitEditorViewEvent.*
 import com.kanastruk.sample.habit.ui.theme.MyApplicationTheme
 import com.kanastruk.sample.habit.ui.theme.SpartanFamily
 import com.kanastruk.sample.habit.ui.theme.colorOptions
+import kotlinx.datetime.Clock
 import timber.log.Timber
 
 @Preview(
@@ -38,7 +41,9 @@ import timber.log.Timber
 @Composable
 fun PreviewHabitEditorCreateView() {
     MyApplicationTheme {
-        HabitEditorView {
+        HabitEditorView(
+            initialHabit = Habit("New Habit", Daily, Todo, 1, Clock.System.now().epochSeconds, null)
+        ) {
             Timber.d("✨ ViewEvent handler called with $it")
         }
     }
@@ -54,7 +59,7 @@ fun PreviewHabitEditorCreateView() {
 )
 @Composable
 fun PreviewHabitEditorView() {
-    val previewEditedHabit = Habit("Fake Habit", Daily, UnitType.Weight, 10, null, null)
+    val previewEditedHabit = Habit("Fake Habit", Daily, Weight, 10, null, null)
     MyApplicationTheme {
         HabitEditorView("42", previewEditedHabit) {
             Timber.d("💾️ ViewEvent handler called with $it")
@@ -70,7 +75,7 @@ fun PreviewHabitEditorView() {
 @Composable
 fun HabitEditorView(
     habitId: String? = null,
-    initialHabit: Habit = Habit("", Weekly, UnitType.Counter, 10, null, null),
+    initialHabit: Habit,
     handler: (HabitEditorViewEvent) -> Unit
 ) {
     LogCompositions(tag = "HabitsEditor", msg = "Recomposed with $initialHabit")
@@ -124,7 +129,7 @@ fun HabitEditorView(
             DropDownPicker(
                 label = "Type",
                 initialPick = edited.unit.toString(),
-                options = UnitType.values()
+                options = values()
                     .map { unitType ->
                         IconOption(
                             unitType.toString(),
@@ -136,7 +141,6 @@ fun HabitEditorView(
             Spacer(Modifier.size(8.dp))
 
             // GOAL
-            var goalString by remember { mutableStateOf(edited.goal.toString()) }
             TextField(
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
@@ -146,7 +150,6 @@ fun HabitEditorView(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 onValueChange = { string ->
                     Timber.d("goal: \"$string\"->${string.toIntOrNull()}")
-                    goalString = string
                     edited = edited.copy(goal = string.toIntOrNull() ?: 0)
                 },
                 label = { Text("Goal") })

@@ -88,6 +88,17 @@ class HabitModel(
     }
 
     /**
+     * When needed (mostly when editing an existing habit),
+     * we can naively get a habit from the model.
+     *
+     * - access to StateFlow's 'value' is thread safe.
+     * - invalidating views and stale data is an 'outside concern'.
+     */
+    fun getHabit(habitId:String):Habit? {
+        return _habitsStore.value.habits[habitId]
+    }
+
+    /**
      * This is the simplest Intent processor.
      */
     private fun process(intent: Intent<HabitState>) {
@@ -151,11 +162,13 @@ class HabitModel(
     /**
      * Process an 'add entry' intent. In our app, typically would be user
      * tapping on a habit to record activity, entering a quantity
+     *
+     * TODO: Cap entries to goal per day.
      */
     fun processAddEntryIntent(habitId: String, quantity:Int) {
         authedProcess(::isModifiable) { (credentials, api),oldState->
             scope.launch {
-                val newEntry = Entry(Clock.System.now().toEpochMilliseconds(), quantity)
+                val newEntry = Entry(Clock.System.now().epochSeconds, quantity)
                 api.createEntry(
                     userId = credentials.localId,
                     habitId = habitId,
@@ -171,9 +184,11 @@ class HabitModel(
      * We'll give the users the ability to 'undo' the latest habit entry for a given habit.
      * I imagine either a button in the 'habit detail view' or an undo button hidden behind
      * a horizontal sliding row.
+     *
+     * TODO: Scope removals to the current day. Unbounded for now.
      */
     fun processUndoEntryIntent(habitId:String) {
-        authedProcess(::isModifiable) { (credentials, api),oldState->
+        authedProcess(::isModifiable) { (credentials, api), oldState ->
             scope.launch {
                 oldState.entries[habitId]
                     ?.toList()
@@ -181,7 +196,8 @@ class HabitModel(
                     ?.let { (latestEntryId, _) ->
                         api.removeEntry(credentials.localId, habitId, latestEntryId)
                     }
-                    ?: TODO("publish a UX Error event") // NOTE: Crash-worthy?
+                    ?: process { old -> old.copy(cacheState = MODIFIED) }
+                        .also { Timber.d("⚠️  No entries left for this habit.") }
             }
             oldState.copy(cacheState = BUSY).touch()
         }
