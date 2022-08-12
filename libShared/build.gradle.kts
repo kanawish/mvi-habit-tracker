@@ -24,8 +24,6 @@ kotlin {
             kotlinOptions.jvmTarget = "11"
         }
     }
-    // NOTE: https://youtrack.jetbrains.com/issue/KT-49109
-    // NOTE: https://stackoverflow.com/questions/60534770/exception-when-building-a-kotlin-js-project-error-package-json-name-contains-i
     js(IR) {
         browser {
             commonWebpackConfig {
@@ -35,8 +33,6 @@ kotlin {
         binaries.executable()
     }
     ios()
-    // NOTE: https://stackoverflow.com/questions/40743713/command-line-tool-error-xcrun-error-unable-to-find-utility-xcodebuild-n?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-    macosX64("macos")
     android()
 
     sourceSets {
@@ -46,21 +42,12 @@ kotlin {
                 optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
             }
         }
-        val commonMain by getting {
-            dependencies {}
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
+        val commonMain by getting {}
+        val commonTest by getting {}
 
         val androidMain by getting {}
-        val androidTest by getting {
-            dependencies {
-                implementation("junit:junit:4.13.2")
-            }
-        }
+        val androidTest by getting {}
+
         val iosMain by getting {}
         val iosTest by getting {}
 

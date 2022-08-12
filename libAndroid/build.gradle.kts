@@ -32,8 +32,8 @@ android {
 dependencies {
     api(project(":libCommon"))
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     // Simple DI
     implementation("io.insert-koin:koin-android:3.2.0")

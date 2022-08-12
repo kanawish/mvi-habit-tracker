@@ -1,0 +1,18 @@
+{
+  "habitA" : {
+    "name" : "Habit A",
+    "frequency": "Daily",
+    "goal": 4,
+    "startDate": 1653520726,
+    "unit": "Todo",
+    "archived": false
+  },
+  "habitB" : {
+    "name" : "Habit B",
+    "frequency": "Daily",
+    "goal": 4,
+    "startDate": 1653520726,
+    "unit": "Todo",
+    "archived": false
+  }
+}

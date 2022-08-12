@@ -33,7 +33,6 @@ kotlin {
         binaries.executable()
     }
     ios()
-    macosX64("macos")
     android()
     sourceSets {
         all {
@@ -45,9 +44,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":libShared"))
-                api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+                api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
                 implementation("io.insert-koin:koin-core:3.2.0")
             }
         }

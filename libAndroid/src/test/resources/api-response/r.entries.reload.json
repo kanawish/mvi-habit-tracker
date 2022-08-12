@@ -1,0 +1,16 @@
+{
+  "habitC": {
+    "entryCa": {
+      "timestamp": 62,
+      "value": 1
+    },
+    "entryCb": {
+      "timestamp": 63,
+      "value": 2
+    },
+    "entryCc": {
+      "timestamp": 64,
+      "value": 12
+    }
+  }
+}

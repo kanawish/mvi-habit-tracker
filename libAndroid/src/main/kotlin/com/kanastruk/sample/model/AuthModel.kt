@@ -1,22 +1,18 @@
 package com.kanastruk.sample.model
 
-import com.kanastruk.fb.rest.auth.Credentials
-import com.kanastruk.fb.rest.*
+import com.kanastruk.fb.rest.IdentityToolkitApi
+import com.kanastruk.fb.rest.IdentityToolkitParam
 import com.kanastruk.fb.rest.auth.AnonymousResponse
+import com.kanastruk.fb.rest.auth.Credentials
 import com.kanastruk.fb.rest.auth.SecureTokenApi
 import com.kanastruk.mvi.intent.Intent
 import com.kanastruk.mvi.intent.expectingIntent
 import com.kanastruk.sample.android.LibAndroid
-import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * AuthModel
@@ -55,7 +51,7 @@ class AuthModel(
     fun refreshToken() = process(
         expectingIntent { old: AuthState.Ready ->
             // Launch the async refresh call.
-            scope.launch(CoroutineName("AuthModel.refreshToken")) {
+            scope.launch {
                 val response = secureTokenApi.refreshToken(
                     apiKey = LibAndroid.API_KEY,
                     grantType = "refresh_token", // TODO: const val
