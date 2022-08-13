@@ -2,6 +2,7 @@ package com.kanastruk.fb.rest
 
 import com.kanastruk.sample.common.data.Entry
 import com.kanastruk.sample.common.data.Habit
+import com.kanastruk.sample.common.rest.habit.NameResponse
 import retrofit2.Response
 import retrofit2.http.*
 

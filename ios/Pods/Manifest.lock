@@ -1,0 +1,16 @@
+PODS:
+  - libCommon (1.0-SNAPSHOT)
+
+DEPENDENCIES:
+  - libCommon (from `../libCommon/`)
+
+EXTERNAL SOURCES:
+  libCommon:
+    :path: "../libCommon/"
+
+SPEC CHECKSUMS:
+  libCommon: 0fc58fdd2a3888c7973fca8d0afd6719f24433a0
+
+PODFILE CHECKSUM: 2b89192e5eebaabb327c39e8e8bb0f052223f9d9
+
+COCOAPODS: 1.11.3

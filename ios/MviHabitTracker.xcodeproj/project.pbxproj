@@ -1,0 +1,761 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		33E5485ABAA69A20A8710823 /* Pods_MviHabitTracker_MviHabitTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB7AEBAA1124A51FC44F76 /* Pods_MviHabitTracker_MviHabitTrackerUITests.framework */; };
+		379DE090189844AAC0601BEA /* TopTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DE866662BC453C841BFDD /* TopTabView.swift */; };
+		379DE276341C8E4719E385C5 /* ObservableModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DE2110F44C60F1D580657 /* ObservableModels.swift */; };
+		379DE2DDE6D8987BF93D4EF4 /* SealedClassToEnumExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DE648781F8235B0785422 /* SealedClassToEnumExample.swift */; };
+		379DE3C8922A0637AE1D64B5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DEC8C3ED5F2A77C492018 /* EditView.swift */; };
+		379DEA14386FAF3513011C81 /* CombineAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DE28A63D0EF0EEE4061C7 /* CombineAdapters.swift */; };
+		379DEB82D667332EA10AAF5D /* Koin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DE857D5FDACF26D735BEC /* Koin.swift */; };
+		7BEB45334CDA156DD9B1289B /* Pods_MviHabitTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF418E607AD54E6C56D9BDDA /* Pods_MviHabitTrackerTests.framework */; };
+		B01B254B35D9C079F2B92B8C /* Pods_MviHabitTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF393757F7C26508A2A55724 /* Pods_MviHabitTracker.framework */; };
+		F338A9F528885CD10037EAAF /* MviHabitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338A9F428885CD10037EAAF /* MviHabitTrackerApp.swift */; };
+		F338A9F728885CD10037EAAF /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338A9F628885CD10037EAAF /* HabitsView.swift */; };
+		F338A9F928885CD20037EAAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F338A9F828885CD20037EAAF /* Assets.xcassets */; };
+		F338A9FC28885CD20037EAAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F338A9FB28885CD20037EAAF /* Preview Assets.xcassets */; };
+		F338AA0628885CD20037EAAF /* MviHabitTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338AA0528885CD20037EAAF /* MviHabitTrackerTests.swift */; };
+		F338AA1028885CD20037EAAF /* MviHabitTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338AA0F28885CD20037EAAF /* MviHabitTrackerUITests.swift */; };
+		F338AA1228885CD20037EAAF /* MviHabitTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338AA1128885CD20037EAAF /* MviHabitTrackerUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F338AA0228885CD20037EAAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F338A9E928885CD10037EAAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F338A9F028885CD10037EAAF;
+			remoteInfo = MviHabitTracker;
+		};
+		F338AA0C28885CD20037EAAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F338A9E928885CD10037EAAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F338A9F028885CD10037EAAF;
+			remoteInfo = MviHabitTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01C6807E6D780F901FD35227 /* Pods-MviHabitTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MviHabitTracker.release.xcconfig"; path = "Target Support Files/Pods-MviHabitTracker/Pods-MviHabitTracker.release.xcconfig"; sourceTree = "<group>"; };
+		0CA0B960F4611FACB74BEAD8 /* Pods-MviHabitTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MviHabitTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-MviHabitTrackerTests/Pods-MviHabitTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		20CB7AEBAA1124A51FC44F76 /* Pods_MviHabitTracker_MviHabitTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MviHabitTracker_MviHabitTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B99171D1FC472C1A9154981 /* Pods-MviHabitTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MviHabitTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-MviHabitTrackerTests/Pods-MviHabitTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		379DE2110F44C60F1D580657 /* ObservableModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableModels.swift; sourceTree = "<group>"; };
+		379DE28A63D0EF0EEE4061C7 /* CombineAdapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineAdapters.swift; sourceTree = "<group>"; };
+		379DE648781F8235B0785422 /* SealedClassToEnumExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SealedClassToEnumExample.swift; sourceTree = "<group>"; };
+		379DE857D5FDACF26D735BEC /* Koin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koin.swift; sourceTree = "<group>"; };
+		379DE866662BC453C841BFDD /* TopTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTabView.swift; sourceTree = "<group>"; };
+		379DEC8C3ED5F2A77C492018 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		73849EDA0EF2F7034872FDD5 /* Pods-MviHabitTracker-MviHabitTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MviHabitTracker-MviHabitTrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-MviHabitTracker-MviHabitTrackerUITests/Pods-MviHabitTracker-MviHabitTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AF393757F7C26508A2A55724 /* Pods_MviHabitTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MviHabitTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAFC3E8D1615D2EDE6F28E12 /* Pods-MviHabitTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MviHabitTracker.debug.xcconfig"; path = "Target Support Files/Pods-MviHabitTracker/Pods-MviHabitTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		D6E00FBB3A6E4871942FA7B4 /* Pods-MviHabitTracker-MviHabitTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MviHabitTracker-MviHabitTrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-MviHabitTracker-MviHabitTrackerUITests/Pods-MviHabitTracker-MviHabitTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF418E607AD54E6C56D9BDDA /* Pods_MviHabitTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MviHabitTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F338A9F128885CD10037EAAF /* MviHabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MviHabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F338A9F428885CD10037EAAF /* MviHabitTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviHabitTrackerApp.swift; sourceTree = "<group>"; };
+		F338A9F628885CD10037EAAF /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
+		F338A9F828885CD20037EAAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F338A9FB28885CD20037EAAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F338AA0128885CD20037EAAF /* MviHabitTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MviHabitTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F338AA0528885CD20037EAAF /* MviHabitTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviHabitTrackerTests.swift; sourceTree = "<group>"; };
+		F338AA0B28885CD20037EAAF /* MviHabitTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MviHabitTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F338AA0F28885CD20037EAAF /* MviHabitTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviHabitTrackerUITests.swift; sourceTree = "<group>"; };
+		F338AA1128885CD20037EAAF /* MviHabitTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviHabitTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F338A9EE28885CD10037EAAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B01B254B35D9C079F2B92B8C /* Pods_MviHabitTracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F338A9FE28885CD20037EAAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BEB45334CDA156DD9B1289B /* Pods_MviHabitTrackerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F338AA0828885CD20037EAAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33E5485ABAA69A20A8710823 /* Pods_MviHabitTracker_MviHabitTrackerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15220B40F75D3FDE33539C49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF393757F7C26508A2A55724 /* Pods_MviHabitTracker.framework */,
+				20CB7AEBAA1124A51FC44F76 /* Pods_MviHabitTracker_MviHabitTrackerUITests.framework */,
+				EF418E607AD54E6C56D9BDDA /* Pods_MviHabitTrackerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D9E131849AF3F952C24DD31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAFC3E8D1615D2EDE6F28E12 /* Pods-MviHabitTracker.debug.xcconfig */,
+				01C6807E6D780F901FD35227 /* Pods-MviHabitTracker.release.xcconfig */,
+				D6E00FBB3A6E4871942FA7B4 /* Pods-MviHabitTracker-MviHabitTrackerUITests.debug.xcconfig */,
+				73849EDA0EF2F7034872FDD5 /* Pods-MviHabitTracker-MviHabitTrackerUITests.release.xcconfig */,
+				2B99171D1FC472C1A9154981 /* Pods-MviHabitTrackerTests.debug.xcconfig */,
+				0CA0B960F4611FACB74BEAD8 /* Pods-MviHabitTrackerTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F338A9E828885CD10037EAAF = {
+			isa = PBXGroup;
+			children = (
+				F338A9F328885CD10037EAAF /* MviHabitTracker */,
+				F338AA0428885CD20037EAAF /* MviHabitTrackerTests */,
+				F338AA0E28885CD20037EAAF /* MviHabitTrackerUITests */,
+				F338A9F228885CD10037EAAF /* Products */,
+				2D9E131849AF3F952C24DD31 /* Pods */,
+				15220B40F75D3FDE33539C49 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F338A9F228885CD10037EAAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F338A9F128885CD10037EAAF /* MviHabitTracker.app */,
+				F338AA0128885CD20037EAAF /* MviHabitTrackerTests.xctest */,
+				F338AA0B28885CD20037EAAF /* MviHabitTrackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F338A9F328885CD10037EAAF /* MviHabitTracker */ = {
+			isa = PBXGroup;
+			children = (
+				F338A9F428885CD10037EAAF /* MviHabitTrackerApp.swift */,
+				F338A9F628885CD10037EAAF /* HabitsView.swift */,
+				F338A9F828885CD20037EAAF /* Assets.xcassets */,
+				F338A9FA28885CD20037EAAF /* Preview Content */,
+				379DE28A63D0EF0EEE4061C7 /* CombineAdapters.swift */,
+				379DE2110F44C60F1D580657 /* ObservableModels.swift */,
+				379DE857D5FDACF26D735BEC /* Koin.swift */,
+				379DEC8C3ED5F2A77C492018 /* EditView.swift */,
+				379DE866662BC453C841BFDD /* TopTabView.swift */,
+				379DE648781F8235B0785422 /* SealedClassToEnumExample.swift */,
+			);
+			path = MviHabitTracker;
+			sourceTree = "<group>";
+		};
+		F338A9FA28885CD20037EAAF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F338A9FB28885CD20037EAAF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F338AA0428885CD20037EAAF /* MviHabitTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F338AA0528885CD20037EAAF /* MviHabitTrackerTests.swift */,
+			);
+			path = MviHabitTrackerTests;
+			sourceTree = "<group>";
+		};
+		F338AA0E28885CD20037EAAF /* MviHabitTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F338AA0F28885CD20037EAAF /* MviHabitTrackerUITests.swift */,
+				F338AA1128885CD20037EAAF /* MviHabitTrackerUITestsLaunchTests.swift */,
+			);
+			path = MviHabitTrackerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F338A9F028885CD10037EAAF /* MviHabitTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F338AA1528885CD20037EAAF /* Build configuration list for PBXNativeTarget "MviHabitTracker" */;
+			buildPhases = (
+				D529000EFF81182AFAD1BE55 /* [CP] Check Pods Manifest.lock */,
+				F338A9ED28885CD10037EAAF /* Sources */,
+				F338A9EE28885CD10037EAAF /* Frameworks */,
+				F338A9EF28885CD10037EAAF /* Resources */,
+				D90BD90BC3B81AB3D2D3E0BF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MviHabitTracker;
+			productName = MviHabitTracker;
+			productReference = F338A9F128885CD10037EAAF /* MviHabitTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F338AA0028885CD20037EAAF /* MviHabitTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F338AA1828885CD20037EAAF /* Build configuration list for PBXNativeTarget "MviHabitTrackerTests" */;
+			buildPhases = (
+				29DC7AF35DC4632706E11252 /* [CP] Check Pods Manifest.lock */,
+				F338A9FD28885CD20037EAAF /* Sources */,
+				F338A9FE28885CD20037EAAF /* Frameworks */,
+				F338A9FF28885CD20037EAAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F338AA0328885CD20037EAAF /* PBXTargetDependency */,
+			);
+			name = MviHabitTrackerTests;
+			productName = MviHabitTrackerTests;
+			productReference = F338AA0128885CD20037EAAF /* MviHabitTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F338AA0A28885CD20037EAAF /* MviHabitTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F338AA1B28885CD20037EAAF /* Build configuration list for PBXNativeTarget "MviHabitTrackerUITests" */;
+			buildPhases = (
+				9B6BDFCF5DC6D50D9CADA797 /* [CP] Check Pods Manifest.lock */,
+				F338AA0728885CD20037EAAF /* Sources */,
+				F338AA0828885CD20037EAAF /* Frameworks */,
+				F338AA0928885CD20037EAAF /* Resources */,
+				15538D75B9036A590993FF27 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F338AA0D28885CD20037EAAF /* PBXTargetDependency */,
+			);
+			name = MviHabitTrackerUITests;
+			productName = MviHabitTrackerUITests;
+			productReference = F338AA0B28885CD20037EAAF /* MviHabitTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F338A9E928885CD10037EAAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					F338A9F028885CD10037EAAF = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					F338AA0028885CD20037EAAF = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = F338A9F028885CD10037EAAF;
+					};
+					F338AA0A28885CD20037EAAF = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = F338A9F028885CD10037EAAF;
+					};
+				};
+			};
+			buildConfigurationList = F338A9EC28885CD10037EAAF /* Build configuration list for PBXProject "MviHabitTracker" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F338A9E828885CD10037EAAF;
+			productRefGroup = F338A9F228885CD10037EAAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F338A9F028885CD10037EAAF /* MviHabitTracker */,
+				F338AA0028885CD20037EAAF /* MviHabitTrackerTests */,
+				F338AA0A28885CD20037EAAF /* MviHabitTrackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F338A9EF28885CD10037EAAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F338A9FC28885CD20037EAAF /* Preview Assets.xcassets in Resources */,
+				F338A9F928885CD20037EAAF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F338A9FF28885CD20037EAAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F338AA0928885CD20037EAAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15538D75B9036A590993FF27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MviHabitTracker-MviHabitTrackerUITests/Pods-MviHabitTracker-MviHabitTrackerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MviHabitTracker-MviHabitTrackerUITests/Pods-MviHabitTracker-MviHabitTrackerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MviHabitTracker-MviHabitTrackerUITests/Pods-MviHabitTracker-MviHabitTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29DC7AF35DC4632706E11252 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MviHabitTrackerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B6BDFCF5DC6D50D9CADA797 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MviHabitTracker-MviHabitTrackerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D529000EFF81182AFAD1BE55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MviHabitTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D90BD90BC3B81AB3D2D3E0BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MviHabitTracker/Pods-MviHabitTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MviHabitTracker/Pods-MviHabitTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MviHabitTracker/Pods-MviHabitTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F338A9ED28885CD10037EAAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F338A9F728885CD10037EAAF /* HabitsView.swift in Sources */,
+				F338A9F528885CD10037EAAF /* MviHabitTrackerApp.swift in Sources */,
+				379DEA14386FAF3513011C81 /* CombineAdapters.swift in Sources */,
+				379DE276341C8E4719E385C5 /* ObservableModels.swift in Sources */,
+				379DEB82D667332EA10AAF5D /* Koin.swift in Sources */,
+				379DE3C8922A0637AE1D64B5 /* EditView.swift in Sources */,
+				379DE090189844AAC0601BEA /* TopTabView.swift in Sources */,
+				379DE2DDE6D8987BF93D4EF4 /* SealedClassToEnumExample.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F338A9FD28885CD20037EAAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F338AA0628885CD20037EAAF /* MviHabitTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F338AA0728885CD20037EAAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F338AA1028885CD20037EAAF /* MviHabitTrackerUITests.swift in Sources */,
+				F338AA1228885CD20037EAAF /* MviHabitTrackerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F338AA0328885CD20037EAAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F338A9F028885CD10037EAAF /* MviHabitTracker */;
+			targetProxy = F338AA0228885CD20037EAAF /* PBXContainerItemProxy */;
+		};
+		F338AA0D28885CD20037EAAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F338A9F028885CD10037EAAF /* MviHabitTracker */;
+			targetProxy = F338AA0C28885CD20037EAAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F338AA1328885CD20037EAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F338AA1428885CD20037EAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F338AA1628885CD20037EAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAFC3E8D1615D2EDE6F28E12 /* Pods-MviHabitTracker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MviHabitTracker/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kanastruk.MviHabitTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F338AA1728885CD20037EAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01C6807E6D780F901FD35227 /* Pods-MviHabitTracker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MviHabitTracker/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kanastruk.MviHabitTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F338AA1928885CD20037EAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B99171D1FC472C1A9154981 /* Pods-MviHabitTrackerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kanastruk.MviHabitTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MviHabitTracker.app/MviHabitTracker";
+			};
+			name = Debug;
+		};
+		F338AA1A28885CD20037EAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CA0B960F4611FACB74BEAD8 /* Pods-MviHabitTrackerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kanastruk.MviHabitTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MviHabitTracker.app/MviHabitTracker";
+			};
+			name = Release;
+		};
+		F338AA1C28885CD20037EAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6E00FBB3A6E4871942FA7B4 /* Pods-MviHabitTracker-MviHabitTrackerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kanastruk.MviHabitTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MviHabitTracker;
+			};
+			name = Debug;
+		};
+		F338AA1D28885CD20037EAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73849EDA0EF2F7034872FDD5 /* Pods-MviHabitTracker-MviHabitTrackerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kanastruk.MviHabitTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MviHabitTracker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F338A9EC28885CD10037EAAF /* Build configuration list for PBXProject "MviHabitTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F338AA1328885CD20037EAAF /* Debug */,
+				F338AA1428885CD20037EAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F338AA1528885CD20037EAAF /* Build configuration list for PBXNativeTarget "MviHabitTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F338AA1628885CD20037EAAF /* Debug */,
+				F338AA1728885CD20037EAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F338AA1828885CD20037EAAF /* Build configuration list for PBXNativeTarget "MviHabitTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F338AA1928885CD20037EAAF /* Debug */,
+				F338AA1A28885CD20037EAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F338AA1B28885CD20037EAAF /* Build configuration list for PBXNativeTarget "MviHabitTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F338AA1C28885CD20037EAAF /* Debug */,
+				F338AA1D28885CD20037EAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F338A9E928885CD10037EAAF /* Project object */;
+}

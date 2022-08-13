@@ -1,9 +1,9 @@
 plugins {
-    kotlin("android")
     id("com.android.application")
+    kotlin("android")
 }
 
-val composeUiVersion = "1.2.0-beta02"
+val composeUiVersion = "1.3.0-alpha01"
 
 android {
     namespace = "com.kanastruk.sample.habit"
@@ -38,8 +38,9 @@ android {
     buildFeatures {
         compose = true
     }
+    // https://developer.android.com/jetpack/androidx/releases/compose#versions
     composeOptions {
-        kotlinCompilerExtensionVersion = composeUiVersion
+        kotlinCompilerExtensionVersion = "1.2.0"
     }
     packagingOptions {
         resources.excludes += "META-INF/AL2.0"
@@ -50,13 +51,17 @@ android {
 dependencies {
     implementation(project(":libAndroid"))
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
+    implementation("androidx.activity:activity-compose:1.5.0")
+
+    implementation("androidx.navigation:navigation-compose:2.5.0")
+    api("androidx.navigation:navigation-fragment-ktx:2.5.0") // https://developer.android.com/guide/navigation/navigation-kotlin-dsl#navgraphbuilder
 
     implementation("androidx.compose.ui:ui:$composeUiVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
     implementation("androidx.compose.material:material:1.1.1")
+    implementation("androidx.compose.material:material-icons-extended:1.1.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling:$composeUiVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUiVersion")

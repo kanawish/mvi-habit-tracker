@@ -1,7 +1,5 @@
 package com.kanastruk.mvi.intent
 
-import com.kanastruk.shared.logW
-
 /**
  * E:Expected child, SC: Sealed class parent.
  * When building a state machine using the sealed class approach, 'expecting()'
@@ -13,7 +11,6 @@ inline fun <reified E : SC,SC> expectingIntent(crossinline block: (E) -> SC): In
       when (old) {
          is E -> block(old)
          else -> {
-            logW("Expecting ${E::class.simpleName}, got ${old!!::class.simpleName}")
             old
          }
       }

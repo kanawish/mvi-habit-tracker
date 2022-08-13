@@ -1,5 +1,6 @@
 package com.kanastruk.fb.rest.auth
 
+import com.kanastruk.sample.common.rest.auth.RefreshResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

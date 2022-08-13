@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "com.kanastruk.sample.android"
     compileSdk = 32
     defaultConfig {
         minSdk = 24
@@ -20,20 +21,17 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
     }
 }
 
 dependencies {
     api(project(":libCommon"))
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3")
 
     // Simple DI
     implementation("io.insert-koin:koin-android:3.2.0")
@@ -49,6 +47,8 @@ dependencies {
     // Unit tests
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.insert-koin:koin-test:3.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
 
     // Instrumentation & UI
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

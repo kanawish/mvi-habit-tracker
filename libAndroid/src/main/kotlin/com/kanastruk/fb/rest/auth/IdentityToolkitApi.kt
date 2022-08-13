@@ -1,6 +1,7 @@
 package com.kanastruk.fb.rest
 
-import com.kanastruk.fb.rest.auth.AnonymousResponse
+import com.kanastruk.sample.common.rest.auth.AnonymousResponse
+import com.kanastruk.sample.common.rest.auth.IdentityToolkitParam
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers

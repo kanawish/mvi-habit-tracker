@@ -1,0 +1,33 @@
+/*
+    Table fixed should be applied to table containing div, not the table itself.
+
+    https://codepen.io/balajidesigner/pen/YBKQBK?editors=1100
+    https://stackoverflow.com/questions/4457274/how-to-specify-tables-height-such-that-a-vertical-scroll-bar-appears
+*/
+.table-fixed {
+    height:75vh;
+    overflow:scroll;
+}
+
+/* https://css-tricks.com/almanac/properties/t/table-layout/ */
+/* https://css-tricks.com/fixing-tables-long-strings/ */
+.table-fixed table {
+    table-layout: fixed;
+    width: 100%; /* must have this set */
+}
+
+thead tr:nth-child(1) th{
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/*
+ TODO: Look for better, (but similar) solutions to this.
+ */
+.table-fixed td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

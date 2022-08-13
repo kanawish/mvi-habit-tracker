@@ -1,0 +1,28 @@
+{
+  "name": "libCommon",
+  "version": "1.0-SNAPSHOT",
+  "homepage": "https://github.com/kanawish/mvi-habit-tracker",
+  "source": {
+    "http": ""
+  },
+  "authors": "",
+  "license": "",
+  "summary": "Common library for my MVI Habit Tracker sample",
+  "vendored_frameworks": "build/cocoapods/framework/libCommon.framework",
+  "libraries": "c++",
+  "platforms": {
+    "ios": "15.4"
+  },
+  "pod_target_xcconfig": {
+    "KOTLIN_PROJECT_PATH": ":libCommon",
+    "PRODUCT_MODULE_NAME": "libCommon"
+  },
+  "script_phases": [
+    {
+      "name": "Build libCommon",
+      "execution_position": "before_compile",
+      "shell_path": "/bin/sh",
+      "script": "                if [ \"YES\" = \"$COCOAPODS_SKIP_KOTLIN_BUILD\" ]; then\n                  echo \"Skipping Gradle build task invocation due to COCOAPODS_SKIP_KOTLIN_BUILD environment variable set to \"YES\"\"\n                  exit 0\n                fi\n                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" $KOTLIN_PROJECT_PATH:syncFramework                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME                     -Pkotlin.native.cocoapods.archs=\"$ARCHS\"                     -Pkotlin.native.cocoapods.configuration=\"$CONFIGURATION\"\n"
+    }
+  ]
+}

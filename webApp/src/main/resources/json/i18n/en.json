@@ -1,0 +1,16 @@
+{
+  "lang": "en",
+  "langSelector": {
+    "fr": false,
+    "en": true
+  },
+  "header": {
+    "fr": "Français",
+    "en": "English",
+    "navLabel": {
+      "LANDING": "Home",
+      "BLOG": "Blog",
+      "ABOUT": "About"
+    }
+  }
+}

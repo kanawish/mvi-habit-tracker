@@ -1,0 +1,27 @@
+# NOTE: I follow the KaMPKit conventions, adding doc links to better understand some choices.
+# https://guides.cocoapods.org/syntax/podfile.html#use_frameworks_bang
+use_frameworks!
+
+platform :ios, '15.4'
+
+# NOTE: Unsure how needed this is. https://guides.cocoapods.org/syntax/podfile.html#install_bang
+install! 'cocoapods', :deterministic_uuids => false
+
+target 'MviHabitTracker' do
+
+  # Pods for MviHabitTracker
+  pod 'libCommon', :path => '../libCommon/'
+  # pod 'SwiftLint'
+
+  # from 'pod init'
+  target 'MviHabitTrackerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  # from 'pod init'
+  target 'MviHabitTrackerUITests' do
+    # Pods for testing
+  end
+
+end

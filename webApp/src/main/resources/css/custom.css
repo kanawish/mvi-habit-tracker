@@ -1,0 +1,17 @@
+.form-control-dark {
+  color: #fff;
+  background-color: var(--bs-dark);
+  border-color: var(--bs-gray);
+}
+.form-control-dark:focus {
+  color: #fff;
+  background-color: var(--bs-dark);
+  border-color: #fff;
+  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+.vh-95 {
+  height: 95vh!important;
+}
+.vh-50 {
+  height: 50vh!important;
+}

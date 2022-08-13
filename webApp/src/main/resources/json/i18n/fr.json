@@ -1,0 +1,149 @@
+{
+  "lang": "fr",
+  "langSelector": {
+    "fr": true,
+    "en": false
+  },
+  "header": {
+    "fr": "Français",
+    "en": "English"
+  },
+  "reserve": {
+    "title": "Formulaire de réservation | Ramasse.ca",
+    "pleaseWait": "Un instant...",
+    "morning": "Matin",
+    "afternoon": "Après-midi",
+    "evening": "Soirée",
+    "contactDetails": "Coordonnées",
+    "fullName": "Nom",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "addressHeader": "Adresse desservie",
+    "address1": "Adresse 1",
+    "address2": "Adresse 2",
+    "city": "Ville",
+    "postalCode": "Code postal",
+    "required": {
+      "generic": "Obligatoire",
+      "email": "Courriel obligatoire",
+      "phone": "Téléphone obligatoire",
+      "postal": "Code postal valide obligatoire"
+    },
+    "nav": {
+      "language": "[EN]",
+      "href": "/en/reserve"
+    },
+    "stepService": {
+      "header": "Quel service vous convient le mieux?"
+    },
+    "collectionCard": {
+      "title": "Services de collecte",
+      "subtitle": "Sans tracas!",
+      "text": "Nous proposons un service de ramassage inégalé, que ce soit pour le résidentiel, le commercial ou l’industriel. Nous faisons la collecte de vos articles rapidement et sans soucis.",
+      "button": "Planifier un ramassage"
+    },
+    "containerCard": {
+      "title": "Services de location de conteneurs",
+      "subtitle": "Parfait pour les entrepreneurs",
+      "text": "Nous proposons un service de location de conteneurs, que ce soit pour le résidentiel, le commercial ou l’industriel. 10, 14, 20 et 40 verges disponibles.",
+      "button": "Louer un conteneur"
+    },
+    "stepSchedule": {
+      "calLoading": "[Chargement]",
+      "back": "Retour aux services"
+    },
+    "stepContactAddress": {
+      "submitButton": "Réviser"
+    },
+    "stepRecap": {
+      "header": "Révision",
+      "editButton": "Modifier",
+      "bookButton": "Recevoir une soumission"
+    },
+    "thanks": {
+      "title": "Merci!",
+      "subtext": "Nous vous contacterons prochainement pour finaliser votre commande.",
+      "questions": "Des questions? Appelez-nous!"
+    }
+  },
+  "index": {
+    "title": "Ramassage et location de conteneurs | Ramasse.ca",
+    "ramasseCa": "RAMASSE.CA",
+    "nav": {
+      "services": "NOS SERVICES",
+      "what": "CE QUE L'ON RAMASSE",
+      "about": "À PROPOS",
+      "toggle": {
+        "language": "[EN]",
+        "href": "/en/index.html"
+      }
+    },
+    "button": {
+      "reserve": "RÉSERVEZ EN LIGNE",
+      "callUs": "APPELEZ-NOUS",
+      "phoneNumber": "1-800-RAMASSE",
+      "collection": {
+        "subject": "Ramassage",
+        "body": "Nous nous engageons à vous répondre dans les plus brefs délais et à vous rappeler si vous laissez vos coordonnées téléphoniques ou courrier électronique. Merci."
+      },
+      "rental": {
+        "subject": "Location de conteneurs",
+        "body": "Nous nous engageons à vous répondre dans les plus brefs délais et à vous rappeler si vous laissez vos coordonnées téléphoniques ou courrier électronique. Merci."
+      }
+    },
+    "homepage": {
+      "header": "On&nbspramasse tout&nbsp!",
+      "subtext": "Nous effectuons le ramassage de meubles, électroménagers, objets encombrants, débris de construction, déchets et beaucoup plus."
+    },
+    "service": {
+      "header": "Nos Services",
+      "collection": {
+        "header": "Ramassage",
+        "body": "Nous proposons un service de ramassage inégalé, que ce soit pour le résidentiel, le commercial ou l’industriel. Nous faisons la collecte de vos articles rapidement et sans soucis.",
+        "action": "Réserver"
+      },
+      "rental": {
+        "header": "Location de conteneurs",
+        "body": "Nous proposons un service de location de conteneurs, que ce soit pour le résidentiel, le commercial ou l’industriel. 10, 14, 20 et 40 verges disponibles.",
+        "action": "Louer"
+      }
+    },
+    "what": {
+      "headerA": "On ramasse ",
+      "headerB": "TOUT",
+      "residential": {
+        "title": "Résidentiel",
+        "description": "Nous cueillons tous vos meubles indésirables ou encombrants."
+      },
+      "appliances": {
+        "title": "Électroménagers",
+        "description": "Nous cueillons les électroménagers. Qu’ils soient au 2e ou 3e étage, peu importe, notre équipe les ramassera sans aucune difficulté."
+      },
+      "commercial": {
+        "title": "Commercial",
+        "description": "Nous ramassons tous vos meubles de bureau et meubles commerciaux."
+      },
+      "construction": {
+        "title": "Construction",
+        "description": "Nous ramassons aussi tous vos débris de rénovation."
+      }
+    },
+    "about": {
+      "header": "À propos",
+      "p1B": " est une jeune entreprise québécoise, une équipe dynamique qui travaille à embellir l'environnement.",
+      "p2": "Soucieux, protecteur de l’environnement, et en pleine expansion avec notre centre de tri, nous visons à devenir le chef de file en matière de ramassage et de recyclage au Québec.",
+      "p3": "Nous redistribuons aux organismes de charité les articles réutilisables afin donner une deuxième vie à vos meubles. Nous croyons qu'il est temps de bouger pour aider notre planète."
+    },
+    "footer": {
+      "reach": "Nous joindre",
+      "questions": "Vous avez des questions ou des commentaires?",
+      "address1": "10800, ave Cantin",
+      "address2": "Montréal-Nord, Qc H1G 6P7",
+      "email": "info@ramasse.ca",
+      "phone": "1-800-RAMASSE",
+      "zones": "Zones Desservies"
+    }
+  }
+}
