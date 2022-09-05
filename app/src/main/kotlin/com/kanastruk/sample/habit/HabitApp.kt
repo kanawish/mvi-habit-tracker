@@ -3,13 +3,11 @@ package com.kanastruk.sample.habit
 import LibCommonAndroid
 import android.app.Application
 import android.content.Context
-import com.kanastruk.fb.rest.HabitApi
 import com.kanastruk.sample.common.rest.auth.Credentials
 import com.kanastruk.sample.common.LibCommon
 import com.kanastruk.sample.common.model.AuthModel
 import com.kanastruk.sample.common.model.AuthState
 import com.kanastruk.sample.common.model.HabitModel
-import com.kanastruk.sample.common.rest.habit.HabitApiClient
 import com.kanastruk.sample.common.rest.ktor.buildHabitClient
 import com.kanastruk.sample.habit.ui.getCredentials
 import com.kanastruk.sample.habit.ui.setCredentials

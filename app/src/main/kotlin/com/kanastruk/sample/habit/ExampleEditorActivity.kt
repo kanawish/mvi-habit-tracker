@@ -49,14 +49,13 @@ class ExampleEditorActivity : ComponentActivity() {
                     }
                 }
 
-
                 val authState by authModel.authStore.collectAsState()
                 val habitState by habitModel.habitsStore.collectAsState()
                 LogCompositions(tag = "authState/habitState", msg = "authModelState: $authState\nhabitState: $habitState" )
 
                 // NOTE: Smart cast breaks when accessing authState directly.
                 // TODO: (vid: Maybe do the authState[State] 'yo' idea?)
-                val handler = { event:AuthViewEvent ->
+                val handler = { event: AuthViewEvent ->
                     when (event) {
                         RefreshCredentialsClick -> authModel.processRefreshToken() // NOTE: Rename to 'processRefreshTokenIntent()'?
                         AttemptReloadClick -> habitModel.processReloadIntent()

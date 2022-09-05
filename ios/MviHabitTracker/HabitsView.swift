@@ -29,8 +29,8 @@ struct HabitRowView:View {
  - iterate lists https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-views-in-a-loop-using-foreach
  */
 struct HabitsView: View {
-    @ObservedObject var obsAuthModel = ObsAuthModel()
-    @ObservedObject var obsHabitModel = ObsHabitModel()
+    @StateObject var obsAuthModel = ObsAuthModel()
+    @StateObject var obsHabitModel = ObsHabitModel()
 
     var body: some View {
         let mappedHabits: [Habit] =
@@ -47,7 +47,7 @@ struct HabitsView: View {
             HStack {
                 let refreshAction = {obsAuthModel.processRefresh()}
                 Button(action: refreshAction) {
-                    Label("Refresh", systemImage: "key")
+                    Label("Auth Refresh", systemImage: "key")
                 }.buttonStyle(.bordered)
                     .frame(maxWidth: .infinity)
                 let reloadAction = {

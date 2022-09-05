@@ -20,11 +20,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kanastruk.sample.common.data.Frequency
 import com.kanastruk.sample.common.data.Frequency.Daily
 import com.kanastruk.sample.common.data.Frequency.Weekly
 import com.kanastruk.sample.common.data.Habit
-import com.kanastruk.sample.common.data.UnitType
 import com.kanastruk.sample.common.data.UnitType.*
 import com.kanastruk.sample.habit.R
 import com.kanastruk.sample.habit.ui.HabitEditorViewEvent.*

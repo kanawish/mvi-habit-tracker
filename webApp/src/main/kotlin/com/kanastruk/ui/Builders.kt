@@ -170,7 +170,7 @@ fun Document.buildScalingLandingPage(
         "images/matthias-mullie-VAxCHgJvZ0g-unsplash.jpg.webp",
         "images/mike-kienle-CatVdRYLBBU-unsplash.jpg.webp"
     )
-    val backdropCarousel = buildBackdropCarousel(carouselId, strings)
+    // val backdropCarousel = buildBackdropCarousel(carouselId, strings)
     val overlay = create.div("w-100") {
         style = "position: absolute;"
         img(classes = "w-100 vh-50") {
@@ -184,7 +184,7 @@ fun Document.buildScalingLandingPage(
     body?.apply {
         append {
             div("shadow-lg d-flex flex-column vh-50 text-center text-white").apply {
-                append(backdropCarousel)
+                // append(backdropCarousel)
                 append(overlay)
             }
         }

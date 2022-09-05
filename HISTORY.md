@@ -2,7 +2,7 @@
 
 When working with the 'newest and greatest' Android and Kotlin projects, I find myself running into a large amount of build issues and intellisense annoyances.
 
-Here is a centralized (and time-stamped) history of these issues, with solution or quick-fix when found. 
+Here is a centralized (and time-stamped) history of these issues, with solution or workaround, when found. 
 
 - Firestore [backups](https://medium.com/google-cloud/firestore-backups-the-easy-way-with-cloud-workflows-3a96a434d3c7) will be needed.
 - Some basics to [fetch list of peripherals](https://stackoverflow.com/questions/34592179/how-get-the-list-of-paired-bluetooth-devices-in-swift).

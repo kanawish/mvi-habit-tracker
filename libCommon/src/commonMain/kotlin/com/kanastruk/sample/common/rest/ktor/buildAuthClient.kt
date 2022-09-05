@@ -14,6 +14,7 @@ import kotlinx.serialization.json.Json
 
 fun <T : HttpClientEngineConfig> buildAuthClient(engineFactory: HttpClientEngineFactory<T>) =
     HttpClient(engineFactory) {
+        val log: Logger = Logger.withTag("🐈💨 buildAuthClient")
         expectSuccess = true
         install(ContentNegotiation) {
             json(Json {
@@ -24,7 +25,7 @@ fun <T : HttpClientEngineConfig> buildAuthClient(engineFactory: HttpClientEngine
         install(Logging) {
             logger = object : io.ktor.client.plugins.logging.Logger {
                 override fun log(message: String) {
-                    // log.v { message }
+                    log.v { message }
                 }
             }
             level = LogLevel.INFO
