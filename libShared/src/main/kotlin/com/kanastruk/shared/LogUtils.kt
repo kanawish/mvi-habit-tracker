@@ -1,15 +1,15 @@
 package com.kanastruk.shared
 
-import android.util.Log
+import timber.log.Timber
 
 actual fun logE(msg: String) {
-    Log.e("libShared", msg)
+    Timber.e(msg)
 }
 
 actual fun logW(msg: String) {
-    Log.w("libShared", msg)
+    Timber.w(msg)
 }
 
 actual fun logD(msg: String) {
-    Log.d("libShared", msg)
+    Timber.d(msg)
 }

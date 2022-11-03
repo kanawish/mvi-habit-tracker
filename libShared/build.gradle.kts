@@ -45,8 +45,18 @@ kotlin {
         val commonMain by getting {}
         val commonTest by getting {}
 
-        val androidMain by getting {}
-        val androidTest by getting {}
+        val androidMain by getting {
+            dependencies {
+                // Logging
+                implementation("com.jakewharton.timber:timber:4.7.1")
+            }
+        }
+        val androidTest by getting {
+            dependencies {
+                // Unit tests
+                implementation("junit:junit:4.13.2")
+            }
+        }
 
         val iosMain by getting {}
         val iosTest by getting {}
