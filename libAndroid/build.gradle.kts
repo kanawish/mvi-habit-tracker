@@ -49,6 +49,8 @@ dependencies {
     // Unit tests
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.insert-koin:koin-test:3.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
 
     // Instrumentation & UI
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

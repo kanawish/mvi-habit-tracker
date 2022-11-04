@@ -48,7 +48,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 // Logging
-                implementation("com.jakewharton.timber:timber:4.7.1")
+                implementation("com.jakewharton.timber:timber:4.7.1") // https://github.com/JakeWharton/timber/releases
             }
         }
         val androidTest by getting {
@@ -57,7 +57,6 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-
         val iosMain by getting {}
         val iosTest by getting {}
 

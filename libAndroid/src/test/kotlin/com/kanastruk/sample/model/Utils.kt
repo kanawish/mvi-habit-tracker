@@ -25,12 +25,55 @@ import java.nio.charset.StandardCharsets
 /**
  * Utility method that queues up a response built from a JSON file in our testing resources folder.
  */
+internal fun MockWebServer.enqueueResponse(fileName: String, code: Int) {
+    val body: String? = javaClass.classLoader
+        ?.getResourceAsStream("api-response/$fileName")
+        ?.run { source().buffer().readString(StandardCharsets.UTF_8) }
+
+    enqueue(
+        MockResponse()
+            .setResponseCode(code)
+            .apply { body?.let { setBody(body) } } // Optional body.
+    )
+}
 
 /**
  *  AuthModel builder function, might end up moving this to DI when we implement it.
  */
+fun buildAuthModel(
+    credentials: Credentials?,
+    idUrl: String = LibAndroid.IDENTITY_TOOLKIT_ENDPOINT,
+    secTokenUrl: String = LibAndroid.SECURE_TOKEN_ENDPOINT,
+    scope: CoroutineScope
+): AuthModel {
+    val loggingInterceptor = HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
+    val client = OkHttpClient.Builder()
+        // .addInterceptor(loggingInterceptor)
+        .build()
+
+    // For sign in
+    val identityApi: IdentityToolkitApi = Retrofit.Builder()
+        .baseUrl(idUrl)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(IdentityToolkitApi::class.java)
+
+    // For refresh
+    val secureTokenApi: SecureTokenApi = Retrofit.Builder()
+        .baseUrl(secTokenUrl)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(SecureTokenApi::class.java)
+
+    return AuthModel(credentials, identityApi, secureTokenApi, scope)
+}
 
 /** Test authModel builder */
+fun CoroutineScope.buildTestAuthModel(mockUrlString: String, credentials: Credentials? = null): AuthModel {
+    return buildAuthModel(credentials, mockUrlString, mockUrlString, this)
+}
 
 /**
  * HabitApi builder function, might end up moving this to DI when we implement it.
