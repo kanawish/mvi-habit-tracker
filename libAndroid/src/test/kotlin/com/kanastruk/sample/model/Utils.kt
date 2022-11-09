@@ -78,5 +78,33 @@ fun CoroutineScope.buildTestAuthModel(mockUrlString: String, credentials: Creden
 /**
  * HabitApi builder function, might end up moving this to DI when we implement it.
  */
+fun buildHabitApi(
+    authToken: String,
+    url: String = LibAndroid.RTDB_URL
+) : HabitApi {
+    fun buildClient(authToken:String): OkHttpClient = OkHttpClient
+        .Builder()
+        .addInterceptor { chain ->
+            val url = chain
+                .request().url
+                .newBuilder()
+                .addQueryParameter("auth", authToken)
+                .build()
+            chain.proceed(chain.request().newBuilder().url(url).build())
+        }
+        // .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BASIC) })
+        .build()
+
+    return Retrofit
+        .Builder()
+        .baseUrl(url)
+        .client(buildClient(authToken))
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(HabitApi::class.java)
+}
 
 /** Test habitModel builder */
+fun CoroutineScope.buildTestHabitModel(urlString:String, authModel: AuthModel): HabitModel {
+    return HabitModel(authModel, { authToken -> buildHabitApi(authToken, urlString) }, this)
+}

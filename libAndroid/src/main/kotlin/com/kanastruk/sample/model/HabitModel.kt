@@ -1,22 +1,16 @@
 package com.kanastruk.sample.model
 
-import com.kanastruk.fb.rest.auth.Credentials
 import com.kanastruk.fb.rest.HabitApi
+import com.kanastruk.fb.rest.auth.Credentials
 import com.kanastruk.mvi.intent.Intent
-import com.kanastruk.sample.android.LibAndroid
 import com.kanastruk.sample.common.data.Entry
 import com.kanastruk.sample.common.data.Habit
 import com.kanastruk.sample.model.CacheState.*
-import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 
@@ -119,8 +113,11 @@ class HabitModel(
     ) {
         val currentHabitState = _habitsStore.value
         currentHabitApi.value?.let { internalState ->
-            if (predicate(currentHabitState)) intent(internalState, currentHabitState)
-            else Timber.w("authedProcess() call ignored: predicate returned `false` for $currentHabitState.")
+            if (predicate(currentHabitState)) {
+                _habitsStore.value = intent(internalState, currentHabitState)
+            } else {
+                Timber.w("authedProcess() call ignored: predicate returned `false` for $currentHabitState.")
+            }
         } ?: Timber.w("authedProcess() call ignored: internal state is null.")
     }
 
@@ -145,7 +142,7 @@ class HabitModel(
     fun processReloadIntent() {
         authedProcess(::isReloadable) { (credentials, api),oldState->
             val userId = credentials.localId
-            scope.launch(CoroutineName("HabitModel.processReloadIntent")) { api.reloadProcess(userId) }
+            scope.launch { api.reloadProcess(userId) }
 
             oldState.copy(cacheState = LOADING).touch()
         }
@@ -158,7 +155,7 @@ class HabitModel(
     fun processAddEntryIntent(habitId: String, quantity:Int) {
         authedProcess(::isModifiable) { (credentials, api),oldState->
             scope.launch {
-                val newEntry = Entry(Clock.System.now().epochSeconds, quantity)
+                val newEntry = Entry(Clock.System.now().toEpochMilliseconds(), quantity)
                 api.createEntry(
                     userId = credentials.localId,
                     habitId = habitId,
@@ -182,7 +179,7 @@ class HabitModel(
                     ?.toList()
                     ?.maxByOrNull { (_, v) -> v.timestamp }
                     ?.let { (latestEntryId, _) ->
-                        api.removeEntry(habitId, credentials.localId, latestEntryId)
+                        api.removeEntry(credentials.localId, habitId, latestEntryId)
                     }
                     ?: TODO("publish a UX Error event") // NOTE: Crash-worthy?
             }
@@ -232,13 +229,16 @@ class HabitModel(
      *
      * see https://www.amusingplanet.com/2017/08/the-art-of-deliberate-imperfection.html
      */
-    fun processArchiveHabitIntent(habitId:String, habit:Habit) {
-        authedProcess(::isModifiable) { (credentials, api),oldState->
-            scope.launch {
-                api.updateHabit(credentials.localId, habitId, habit.copy(archived = true))
+    fun processArchiveHabitIntent(habitId:String) {
+        habitsStore.value.habits[habitId]?.let { habit ->
+            authedProcess(::isModifiable) { (credentials, api),oldState->
+                scope.launch {
+                    api.updateHabit(credentials.localId, habitId, habit.copy(archived = true))
+                }
+                oldState.copy(cacheState = BUSY).touch()
             }
-            oldState.copy(cacheState = BUSY).touch()
-        }
+        } ?: Timber.w("processArchiveHabitIntent() call ignored: could not find habit '$habitId'.")
+        // NOTE: Crash-worthy?
     }
 
     // ***** PRIVATE RETROFIT/API DEPENDENT FUNCTIONS *****
@@ -270,7 +270,7 @@ class HabitModel(
                     old.copy(
                         cacheState = MODIFIED,
                         habits = old.habits.plus(nameResponse.name to habit)
-                    )
+                    ).touch()
                 }
             }
         } else {
@@ -289,7 +289,7 @@ class HabitModel(
                     old.copy(
                         cacheState = MODIFIED,
                         habits = old.habits.plus(habitId to savedHabit)
-                    )
+                    ).touch()
                 }
             }
         } else {
@@ -302,9 +302,13 @@ class HabitModel(
      */
     private suspend fun HabitApi.createEntry(userId: String, habitId: String, entry: Entry) {
         val response = postEntry(userId, habitId, entry)
-        if( response.isSuccessful ) {
+        if (response.isSuccessful) {
             response.body()?.name?.let { newEntryId ->
-                process { old -> old.plusEntry(habitId, newEntryId, entry) }
+                process { old ->
+                    old.plusEntry(habitId, newEntryId, entry)
+                        .copy(cacheState = MODIFIED)
+                        .touch()
+                }
             }
         } else {
             TODO("publish an API/Auth Error event")
@@ -314,7 +318,11 @@ class HabitModel(
     private suspend fun HabitApi.removeEntry(userId: String, habitId: String, entryId: String) {
         val response = deleteEntry(userId, habitId, entryId)
         if (response.isSuccessful) {
-            process { old -> old.minusEntry(habitId, entryId) }
+            process { old ->
+                old.minusEntry(habitId, entryId)
+                    .copy(cacheState = MODIFIED)
+                    .touch()
+            }
         } else {
             TODO("publish an API/Auth Error event")
         }

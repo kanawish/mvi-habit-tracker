@@ -19,11 +19,11 @@ data class HabitState(
     val habits: Map<String, Habit> = emptyMap(),
     val entries: Map<String, Map<String, Entry>> = emptyMap(),
     val cacheState: CacheState,
-    val touchTime: Long = Clock.System.now().epochSeconds
+    val touchTime: Long = Clock.System.now().toEpochMilliseconds()
 )
 
 /** HabitState.touch() Updates 'touchTime' to Clock 'now()'. */
-fun HabitState.touch() = this.copy(touchTime = Clock.System.now().epochSeconds)
+fun HabitState.touch() = this.copy(touchTime = Clock.System.now().toEpochMilliseconds())
 
 /**
  * HabitError are 'one time signals' the UX can react to, to prompt users with
