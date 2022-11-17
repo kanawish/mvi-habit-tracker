@@ -10,11 +10,8 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
+import org.junit.*
 import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Test
 import timber.log.Timber
 import kotlin.test.assertIs
 
@@ -32,15 +29,12 @@ import kotlin.test.assertIs
 class AuthModelTest {
 
     companion object {
-        @BeforeClass
+        @BeforeClass @JvmStatic
+        fun onlyOnce() = Timber.plant(tree)
+
+        @AfterClass
         @JvmStatic
-        fun onlyOnce() {
-            Timber.plant(object : Timber.Tree() {
-                override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-                    println("[T$priority${tag?.let { "|$it" } ?: ""}]:$message")
-                }
-            })
-        }
+        fun cleanUp() = Timber.uproot(tree)
     }
 
     private lateinit var mockWebServer: MockWebServer

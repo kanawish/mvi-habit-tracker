@@ -21,6 +21,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import java.nio.charset.StandardCharsets
 
+val tree = object : Timber.Tree() {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+        println("[T$priority${tag?.let { "|$it" } ?: ""}]:$message")
+    }
+}
 
 /**
  * Utility method that queues up a response built from a JSON file in our testing resources folder.

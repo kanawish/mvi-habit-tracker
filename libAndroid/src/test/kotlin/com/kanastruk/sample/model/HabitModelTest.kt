@@ -14,6 +14,7 @@ import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
+import org.junit.AfterClass
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.BeforeClass
@@ -24,13 +25,10 @@ import kotlin.test.assertNotNull
 class HabitModelTest {
     companion object {
         @BeforeClass @JvmStatic
-        fun onlyOnce() {
-            Timber.plant(object : Timber.Tree() {
-                override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-                    println("[T$priority${tag?.let { "|$it" } ?: ""}]:$message")
-                }
-            })
-        }
+        fun onlyOnce() = Timber.plant(tree)
+
+        @AfterClass @JvmStatic
+        fun cleanUp() = Timber.uproot(tree)
     }
 
     private var mockWebServer = MockWebServer()
