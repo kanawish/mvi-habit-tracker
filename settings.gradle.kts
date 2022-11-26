@@ -1,15 +1,2 @@
-
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-
+include(":app", ":libAndroid", ":libCommon")
 rootProject.name = "MVIHabitTracker"
-
-include(":libShared")
-include(":libCommon")
-include(":libAndroid")
-include(":app")

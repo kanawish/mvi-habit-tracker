@@ -2,7 +2,8 @@ package com.kanastruk.sample.model
 
 import com.kanastruk.sample.common.data.Entry
 import com.kanastruk.sample.common.data.Habit
-import kotlinx.datetime.Clock
+import com.kanastruk.sample.common.data.toLocalDateTime
+import kotlinx.datetime.*
 
 /**
  * HabitState holds all the user's habits and entries. Conceptually
@@ -17,10 +18,26 @@ import kotlinx.datetime.Clock
  */
 data class HabitState(
     val habits: Map<String, Habit> = emptyMap(),
-    val entries: Map<String, Map<String, Entry>> = emptyMap(),
+    val entries: Map<String, Map<String, Entry>> = emptyMap(), // TODO: Yo dog... this 'entries' naming overloading...
     val cacheState: CacheState,
     val touchTime: Long = Clock.System.now().toEpochMilliseconds()
 )
+
+/**
+ * Entry sum per habit for given date.
+ */
+fun HabitState.sumHabitEntries(
+    timeZone: TimeZone = TimeZone.currentSystemDefault(),
+    date: LocalDate = Clock.System.now().toLocalDateTime(timeZone).date
+): List<Triple<String, Habit, Float>> {
+    return habits
+        .map { (key, habit) ->
+            val todaySum = entries[key]?.values
+                ?.filter { entry -> entry.toLocalDateTime(timeZone) == date }
+                ?.sumOf { entry -> entry.value }
+            Triple(key, habit, (todaySum?.toFloat() ?: 0f))
+        }
+}
 
 /** HabitState.touch() Updates 'touchTime' to Clock 'now()'. */
 fun HabitState.touch() = this.copy(touchTime = Clock.System.now().toEpochMilliseconds())

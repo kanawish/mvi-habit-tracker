@@ -2,12 +2,8 @@ package com.kanastruk.sample.android
 
 class LibAndroid {
     companion object {
-        const val Name = "libAndroid"
-
         // Temporary config constants until we have configuration files to read from.
         const val API_KEY = "AIzaSyC-vLYm2yYOFToLHo3El0c2Fv7CrXDf0-c"
-
-        const val PREF_KEY = "com.kanastruk.sample.android:LibAndroid"
 
         const val IDENTITY_TOOLKIT_ENDPOINT = "https://identitytoolkit.googleapis.com/"
         const val SECURE_TOKEN_ENDPOINT = "https://securetoken.googleapis.com/"

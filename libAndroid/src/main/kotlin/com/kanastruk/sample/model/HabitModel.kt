@@ -246,17 +246,25 @@ class HabitModel(
      * Must be 'LOADING' while waiting on callback.
      */
     private suspend fun HabitApi.reloadProcess(userId: String) {
-        val habits = getHabits(userId).body()
-        val entries = getEntries(userId).body()
-        if (habits != null && entries != null) {
-            process { old ->
-                old.copy(
-                    cacheState = LOADED,
-                    habits = habits,
-                    entries = entries
-                ).touch()
-            }
+        fun processFailure() = process { old ->
+            old.copy(cacheState = FAILED).touch()
         }
+
+        val habits = getHabits(userId)
+        if(habits.isSuccessful) {
+            val entries = getEntries(userId)
+            if( entries.isSuccessful) {
+                val entriesBody = entries.body() ?: emptyMap()
+                val habitsBody = habits.body() ?: emptyMap()
+                process { old ->
+                    old.copy(
+                        cacheState = LOADED,
+                        habits = habitsBody,
+                        entries = entriesBody
+                    ).touch()
+                }
+            } else processFailure()
+        } else processFailure()
     }
 
     /**
