@@ -151,6 +151,8 @@ class HabitModel(
     /**
      * Process an 'add entry' intent. In our app, typically would be user
      * tapping on a habit to record activity, entering a quantity
+     *
+     * TODO: Cap entries to goal per day.
      */
     fun processAddEntryIntent(habitId: String, quantity:Int) {
         authedProcess(::isModifiable) { (credentials, api),oldState->
@@ -171,9 +173,11 @@ class HabitModel(
      * We'll give the users the ability to 'undo' the latest habit entry for a given habit.
      * I imagine either a button in the 'habit detail view' or an undo button hidden behind
      * a horizontal sliding row.
+     *
+     * TODO: Scope removals to the current day. Unbounded for now.
      */
     fun processUndoEntryIntent(habitId:String) {
-        authedProcess(::isModifiable) { (credentials, api),oldState->
+        authedProcess(::isModifiable) { (credentials, api), oldState ->
             scope.launch {
                 oldState.entries[habitId]
                     ?.toList()
@@ -181,7 +185,8 @@ class HabitModel(
                     ?.let { (latestEntryId, _) ->
                         api.removeEntry(credentials.localId, habitId, latestEntryId)
                     }
-                    ?: TODO("publish a UX Error event") // NOTE: Crash-worthy?
+                    ?: process { old -> old.copy(cacheState = MODIFIED) }
+                        .also { Timber.d("⚠️  No entries left for this habit.") }
             }
             oldState.copy(cacheState = BUSY).touch()
         }
@@ -246,17 +251,25 @@ class HabitModel(
      * Must be 'LOADING' while waiting on callback.
      */
     private suspend fun HabitApi.reloadProcess(userId: String) {
-        val habits = getHabits(userId).body()
-        val entries = getEntries(userId).body()
-        if (habits != null && entries != null) {
-            process { old ->
-                old.copy(
-                    cacheState = LOADED,
-                    habits = habits,
-                    entries = entries
-                ).touch()
-            }
+        fun processFailure() = process { old ->
+            old.copy(cacheState = FAILED).touch()
         }
+
+        val habits = getHabits(userId)
+        if(habits.isSuccessful) {
+            val entries = getEntries(userId)
+            if( entries.isSuccessful) {
+                val entriesBody = entries.body() ?: emptyMap()
+                val habitsBody = habits.body() ?: emptyMap()
+                process { old ->
+                    old.copy(
+                        cacheState = LOADED,
+                        habits = habitsBody,
+                        entries = entriesBody
+                    ).touch()
+                }
+            } else processFailure()
+        } else processFailure()
     }
 
     /**

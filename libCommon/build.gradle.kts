@@ -11,15 +11,27 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+}
+
+android {
+    configurations {
+        create("androidTestApi")
+        create("androidTestDebugApi")
+        create("androidTestReleaseApi")
+        create("testApi")
+        create("testDebugApi")
+        create("testReleaseApi")
     }
 }
 
 kotlin {
-    jvm("vanillaJvm") {
-        compilations.all {
-            kotlinOptions.jvmTarget = "11"
-        }
-    }
     js(IR) {
         browser {
             commonWebpackConfig {
@@ -39,7 +51,6 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                api(project(":libShared"))
                 api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
@@ -53,11 +64,11 @@ kotlin {
             }
         }
 
+        val androidMain by getting { dependencies {} }
+        val androidTest by getting { dependencies {} }
+
         val iosMain by getting {}
         val iosTest by getting {}
-
-        val vanillaJvmMain by getting {}
-        val vanillaJvmTest by getting {}
 
         val jsMain by getting {}
         val jsTest by getting {}
