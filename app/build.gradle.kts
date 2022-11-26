@@ -1,17 +1,17 @@
 plugins {
-    kotlin("android")
     id("com.android.application")
+    kotlin("android")
 }
 
-val composeUiVersion = "1.2.0-beta02"
+val composeUiVersion = "1.3.1"
 
 android {
     namespace = "com.kanastruk.sample.habit"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         applicationId = "com.kanastruk.sample.habit"
         minSdk = 24
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -28,18 +28,15 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
     }
+    // https://developer.android.com/jetpack/androidx/releases/compose#versions
     composeOptions {
-        kotlinCompilerExtensionVersion = composeUiVersion
+        kotlinCompilerExtensionVersion = "1.2.0"
     }
     packagingOptions {
         resources.excludes += "META-INF/AL2.0"
@@ -50,13 +47,14 @@ android {
 dependencies {
     implementation(project(":libAndroid"))
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.activity:activity-compose:1.6.1")
 
     implementation("androidx.compose.ui:ui:$composeUiVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
-    implementation("androidx.compose.material:material:1.1.1")
+    implementation("androidx.compose.material:material:1.3.1")
+    implementation("androidx.compose.material:material-icons-extended:1.3.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling:$composeUiVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUiVersion")
@@ -77,8 +75,8 @@ dependencies {
     testImplementation("io.insert-koin:koin-test:3.2.0")
 
     // Instrumentation & UI
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.4")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeUiVersion")
 
 }

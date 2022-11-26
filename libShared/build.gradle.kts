@@ -1,20 +1,16 @@
 plugins {
-    kotlin("multiplatform")
     id("com.android.library")
+    kotlin("multiplatform")
 }
 
-group = "com.kanastruk.sample.shared"
 version = "1.0-SNAPSHOT"
 
 android {
-    // sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    compileSdk = 32
+    namespace = "com.kanastruk.sample.shared"
+    compileSdk = 33
     defaultConfig {
         minSdk = 24
-        targetSdk = 32
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetSdk = 33
     }
 }
 

@@ -8,7 +8,8 @@ pluginManagement {
 }
 
 rootProject.name = "MVIHabitTracker"
-include(":app")
-include(":libAndroid")
-include(":libCommon")
+
 include(":libShared")
+include(":libCommon")
+include(":libAndroid")
+include(":app")

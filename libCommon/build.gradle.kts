@@ -3,18 +3,14 @@ plugins {
     id("com.android.library")
 }
 
-group = "com.kanastruk.sample.common"
 version = "1.0-SNAPSHOT"
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    compileSdk = 32
+    namespace = "com.kanastruk.sample.common"
+    compileSdk = 33
     defaultConfig {
         minSdk = 24
-        targetSdk = 32
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetSdk = 33
     }
 }
 

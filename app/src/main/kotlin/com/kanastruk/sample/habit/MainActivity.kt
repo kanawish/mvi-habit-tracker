@@ -10,8 +10,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.kanastruk.sample.android.LibAndroid
-import com.kanastruk.sample.common.LibCommon
 import com.kanastruk.sample.habit.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Modules ${LibAndroid.Name} < ${LibCommon.Name}")
+                    Greeting("Hi there friend.")
                 }
             }
         }
