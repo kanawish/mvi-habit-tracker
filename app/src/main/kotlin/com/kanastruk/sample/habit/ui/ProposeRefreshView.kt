@@ -12,13 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kanastruk.sample.habit.ui.FailedStateViewEvent.*
+import com.kanastruk.sample.habit.ui.AuthViewEvent.AttemptReloadClick
+import com.kanastruk.sample.habit.ui.AuthViewEvent.RefreshCredentialsClick
 import com.kanastruk.sample.habit.ui.theme.SpartanFamily
-
-sealed class FailedStateViewEvent {
-    object RefreshCredentialsClick : FailedStateViewEvent()
-    object AttemptReloadClick : FailedStateViewEvent()
-}
 
 /**
  * TODO: Formalize these talking points in deck.
@@ -47,7 +43,7 @@ sealed class FailedStateViewEvent {
  *  seeing a new ProposeRefresh composition if LOADING results in FAILED again.
  */
 @Composable
-fun ProposeRefresh(label: String, refreshing: Boolean, clickHandler: (FailedStateViewEvent) -> Unit) {
+fun ProposeRefresh(label: String, refreshing: Boolean, clickHandler: (AuthViewEvent) -> Unit) {
     LogCompositions(tag = "Busy", msg = "Recomposed $label")
     var refreshed by remember { mutableStateOf(false) }
     Scaffold {

@@ -76,7 +76,7 @@ import kotlin.math.roundToInt
 fun PreviewHabitsView() {
     MyApplicationTheme {
         val habitState = buildPreviewHabitState()
-        HabitsView(habitState) { Timber.d("📊 ViewEvent handler called with $it") }
+        HabitsView(habitState.value) { Timber.d("📊 ViewEvent handler called with $it") }
     }
 }
 
@@ -84,7 +84,7 @@ fun PreviewHabitsView() {
  *  Top level composable view functions that acts as a 'state holder'.
  */
 @Composable
-fun HabitsView(habitState: State<HabitState>, handler: (HabitsViewEvent) -> Unit) {
+fun HabitsView(habitState: HabitState, handler: (HabitsViewEvent) -> Unit) {
     LogCompositions(tag = "HabitsView", msg = "Recomposed $habitState")
 
     // Internal UI state, editing or no? Toggled from FAB, impacts main list of habits view.
@@ -103,7 +103,7 @@ fun HabitsView(habitState: State<HabitState>, handler: (HabitsViewEvent) -> Unit
         isFloatingActionButtonDocked = true
     ) {
         LazyColumn(Modifier.padding(vertical = 16.dp)) {
-            val summedHabits = habitState.value.sumHabitEntries()
+            val summedHabits = habitState.sumHabitEntries()
             summedHabits.forEachIndexed { index, (habitId,habit,todaySum) ->
                 item(key = habitId) {
                     val rowModifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
@@ -111,8 +111,11 @@ fun HabitsView(habitState: State<HabitState>, handler: (HabitsViewEvent) -> Unit
                         val boxModifier = Modifier
                             .weight(1f)
                             .height(48.dp)
+
                         val progressRatio = todaySum / habit.goal
-                        val progressDescription = "${(progressRatio * 100).roundToInt()}%"
+                        val progressDescription = if (!progressRatio.isNaN()) "${(progressRatio * 100).roundToInt()}%"
+                        else "Error: Goal probably set to 0."
+
                         val habitColor = colorOptions[index % colorOptions.size].color()
                         val dismissHandler: (DismissValue) -> Unit = { dv ->
                             if (dv == DismissedToEnd) handler(AddHabitEntry(habitId))

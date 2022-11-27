@@ -8,7 +8,7 @@ import com.kanastruk.sample.common.data.Frequency
 import com.kanastruk.sample.common.data.Habit
 import com.kanastruk.sample.common.data.UnitType
 import com.kanastruk.sample.habit.ui.*
-import com.kanastruk.sample.habit.ui.FailedStateViewEvent.*
+import com.kanastruk.sample.habit.ui.AuthViewEvent.*
 import com.kanastruk.sample.habit.ui.theme.MyApplicationTheme
 import com.kanastruk.sample.model.*
 import kotlinx.datetime.Clock
@@ -49,47 +49,26 @@ class ExampleEditorActivity : ComponentActivity() {
                 }
 
 
-                val wrappedContent: @Composable () -> Unit = { HabitEditorView(null, newClearHabit(), editorEventHandler) }
-
                 val authState by authModel.authStore.collectAsState()
                 val habitState by habitModel.habitsStore.collectAsState()
                 LogCompositions(tag = "authState/habitState", msg = "authModelState: $authState\nhabitState: $habitState" )
 
                 // NOTE: Smart cast breaks when accessing authState directly.
                 // TODO: (vid: Maybe do the authState[State] 'yo' idea?)
-                AuthWrapper(authState, habitState, wrappedContent)
-
-            }
-        }
-    }
-
-    @Composable
-    private fun AuthWrapper(
-        authState: AuthState,
-        habitState: HabitState,
-        wrappedContent: @Composable () -> Unit
-    ) {
-        when (authState) {
-            AuthState.Init -> BusyStateView(label = "AUTH INITIALIZING")
-            is AuthState.Refreshing,
-            is AuthState.Ready -> when (habitState.cacheState) {
-                CacheState.BUSY,
-                CacheState.LOADING -> BusyStateView(habitState.cacheState.name)
-                CacheState.FAILED -> ProposeRefresh(
-                    habitState.cacheState.name,
-                    authState is AuthState.Refreshing
-                ) {
-                    when (it) {
+                val handler = { event:AuthViewEvent ->
+                    when (event) {
                         RefreshCredentialsClick -> authModel.refreshToken() // NOTE: Rename to 'processRefreshTokenIntent()'?
                         AttemptReloadClick -> habitModel.processReloadIntent()
                     }
                 }
-                CacheState.LOADED,
-                CacheState.MODIFIED -> wrappedContent()
+                AuthWrapper(authState, habitState, handler) {
+                    HabitEditorView(null, newClearHabit(), editorEventHandler)
+                }
+
             }
-            is AuthState.Error -> BusyStateView(label = "AUTH ERROR ${authState.msg}")
         }
     }
+
 
     private fun newClearHabit() = Habit(
         "",

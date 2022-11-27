@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = HABITS.name) {
                     composable(HABITS.name) {
-                        HabitsView(habitState) { event ->
+                        HabitsView(habitState.value) { event ->
                             Timber.d("ViewEvent handler called with $event")
                             when (event) {
                                 HabitsViewEvent.CreateHabit -> navController.navigate(CREATE.name)
